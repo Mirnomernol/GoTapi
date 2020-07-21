@@ -9,13 +9,6 @@ import json
 from pandas.io.json import json_normalize
 
 
-
-
-
-
-
-
-
 "CHARACTERS"
 
 next_url = "https://anapioficeandfire.com/api/characters/"
@@ -51,12 +44,6 @@ print("Done")
 
 
 
-
-
-
-
-
-
 "BOOKS"
 next_url = "https://anapioficeandfire.com/api/books"
 books=[]
@@ -79,18 +66,12 @@ def create_table3():
 create_table3()
 
 df = json_normalize(books)
-new_df = pd.DataFrame(df.characters.str.split(',').tolist(),index=df.name).stack()
-df=new_df
 
 
 
 engine = create_engine("postgresql+psycopg2://postgres:HVpWGgjXi8soQFKAG9zO@localhost:5432/GoT")
 df.to_sql("books", engine, index=False, if_exists='replace')
 print("Done")
-
-
-
-
 
 
 
@@ -121,12 +102,6 @@ df = json_normalize(houses)
 engine = create_engine("postgresql+psycopg2://postgres:HVpWGgjXi8soQFKAG9zO@localhost:5432/GoT")
 df.to_sql("houses", engine, index=False, if_exists='replace')
 print("Done")
-
-
-
-
-
-
 
 
 
